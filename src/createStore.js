@@ -1,5 +1,5 @@
 export function createStore(rootReducer, initialState) {
-  let state = rootReducer(initialState, {type: '__INIT__'})
+  let state = rootReducer(initialState, {type: '__INIT__'})//?
   const subscribers = []
 
   return {
@@ -8,7 +8,7 @@ export function createStore(rootReducer, initialState) {
       subscribers.forEach(sub => sub())
     },
     subscribe(callback) {
-      subscribers.push(callback)
+      subscribers.push(callback)//?
     },
     getState() {
       return state

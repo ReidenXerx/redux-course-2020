@@ -35,7 +35,7 @@ const themeBtn = document.getElementById('theme')
 const store = createStore(
   rootReducer,
   composeWithDevTools(
-    applyMiddleware(thunk, logger)
+    applyMiddleware(thunk, logger) //промежуточное звено между редюсером и диспатчем
   )
 )
 

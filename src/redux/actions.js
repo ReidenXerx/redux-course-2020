@@ -33,7 +33,7 @@ export function changeTheme(newTheme) {
 
 
 export function asyncIncrement() {
-  return function(dispatch) {
+  return function(dispatch, getState) {
     dispatch(disableButtons())
     setTimeout(() => {
       dispatch(increment())
@@ -41,3 +41,19 @@ export function asyncIncrement() {
     }, 1500)
   }
 }
+
+export const updateActiveAndPreviousTabs = (tabId)  => (
+  (dispatch, getState) => {
+      const { activeTabId: prevTabID } = getState();
+      // update previous active tab
+      dispatch({
+          type: actionTypes.UPDATE_PREV_ACTIVE_TAB_ID,
+          payload: prevTabID,
+      });
+      // update current active tab
+      dispatch({
+          type: actionTypes.UPDATE_ACTIVE_TAB_ID,
+          payload: tabId,
+      });
+  }
+);
